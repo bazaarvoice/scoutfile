@@ -7,11 +7,22 @@ module.exports = function (grunt) {
         jshintrc: true,
       },
       all: [
-        '**/*.js',
-        '!node_modules/'
+        'lib/**/*.js',
+        'test/**/*.js',
+        '!test/scratch/**/*'
       ]
+    },
+    nodeunit: {
+      all: ['test/**/*.js', '!test/fixtures/**/*', '!test/scratch/**/*'],
+      options: {
+        reporter: 'minimal'
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+
+  grunt.registerTask('test', ['jshint', 'nodeunit']);
+  grunt.registerTask('default', ['test']);
 };
