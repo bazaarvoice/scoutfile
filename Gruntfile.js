@@ -9,11 +9,17 @@ module.exports = function (grunt) {
       all: [
         'lib/**/*.js',
         'test/**/*.js',
-        '!test/scratch/**/*'
+        '!test/scratch/**/*',
+        '!test/fixtures/browser/nodeunit.js'
       ]
     },
     nodeunit: {
-      all: ['test/**/*.js', '!test/fixtures/**/*', '!test/scratch/**/*'],
+      all: [
+        'test/**/*.js',
+        '!test/fixtures/**/*',
+        '!test/scratch/**/*',
+        '!test/unit/lib/browser/**/*'
+      ],
       options: {
         reporter: 'minimal'
       }

@@ -116,13 +116,14 @@ module.exports = {
           });
       }
     },
-    '`lib/kernel`': {
+    '`lib/browser/kernel`': {
       'is built into the scout': function (test) {
         // a built scout will never contain the `/* APP_MODULES */` token where
         // application modules are injected, so instead check for the portion of
         // the kernel that appears after the token
-        var expected = fs.readFileSync('./lib/kernel.js', { encoding: 'utf8' }).
-          split(/\/\*\s?APP_MODULES\s?\*\//)[1];
+        var expected =
+          fs.readFileSync('./lib/browser/kernel.js', { encoding: 'utf8' }).
+            split(/\/\*\s?APP_MODULES\s?\*\//)[1];
 
         var expectedOne =
           fs.readFileSync('./test/fixtures/lib/index/app-one.js', {
@@ -135,7 +136,7 @@ module.exports = {
           then(function (src) {
             test.ok(
               src.indexOf(expected) > -1,
-              'scout should include `lib/kernel`'
+              'scout should include `lib/browser/kernel`'
             );
 
             return scout.generate({
@@ -152,7 +153,7 @@ module.exports = {
             );
             test.ok(
               src.indexOf(expected) > -1,
-              'scout should include `lib/kernel`'
+              'scout should include `lib/browser/kernel`'
             );
             test.done();
           });

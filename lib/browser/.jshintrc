@@ -13,6 +13,12 @@
 
   "debug": true,
   "eqnull": true,
+  "globalstrict": true,
 
-  "node": true
+  "browser": true,
+  "globals": {
+    "module": false,
+    "require": false
+  }
 }
+
