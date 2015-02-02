@@ -30,7 +30,12 @@ module.exports = {
     },
 
     tearDown: function (callback) {
-      delete globalObject.BV;
+      try {
+        delete globalObject.BV;
+      } catch (e) {
+        // IE8 workaround
+        globalObject.BV = undefined;
+      }
 
       // re-require `BV`
       delete require.cache[require.resolve('../../../../lib/browser/bv')];
