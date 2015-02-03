@@ -3,7 +3,10 @@
 module.exports = {
   entry: {
     'unit-tests': './test/fixtures/browser/unit-tests.runner.js',
-    'lib.loader.loadscript': './test/fixtures/browser/lib.loader.loadscript.js'
+    'lib.loader.loadscript': './test/fixtures/browser/lib.loader.loadscript.js',
+    'lib.loader.loadstylesheet':
+      'file?name=lib.loader.loadstylesheet.css!' +
+      './test/fixtures/browser/lib.loader.loadstylesheet.css'
   },
   output: {
     path: './test/fixtures/browser/',
