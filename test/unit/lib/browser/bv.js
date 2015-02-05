@@ -5,7 +5,7 @@ var _ = require('lodash');
 var globalObject = require('../../../../lib/browser/global');
 var BV = require('../../../../lib/browser/bv');
 
-var customerOverrides = {
+var globalBV = {
   foo: 'bar',
   applesauce: {
     chutney: 'puree'
@@ -20,7 +20,7 @@ module.exports = {
 
   'if `BV` is defined on the global object': {
     setUp: function (callback) {
-      globalObject.BV = customerOverrides;
+      globalObject.BV = globalBV;
 
       // re-require `BV`
       delete require.cache[require.resolve('../../../../lib/browser/bv')];
@@ -44,15 +44,9 @@ module.exports = {
       callback();
     },
 
-    'it is shallowly cloned to `config.customerOverrides`': function (test) {
-      test.ok(_.isObject(BV.config), 'config should be an object');
-      test.ok(
-        _.isObject(BV.config.customerOverrides),
-        'config.customerOverrides should be an object'
-      );
-
-      _.forOwn(customerOverrides, function (val, key) {
-        test.strictEqual(BV.config.customerOverrides[key], val);
+    'it does not destroy the original global.BV properties`': function (test) {
+      _.forOwn(globalBV, function (val, key) {
+        test.strictEqual(BV[key], val);
       });
 
       test.done();
