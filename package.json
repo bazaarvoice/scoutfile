@@ -4,10 +4,18 @@
   "description": "Tools to generate a custom scout file, as well as commonly useful modules",
   "main": "lib/index.js",
   "dependencies": {
-    "webpack": "^1.5.3",
+    "async": "^0.9.0",
+    "bluebird": "^2.9.2",
+    "css-loader": "^0.9.1",
+    "file-loader": "^0.8.1",
+    "handlebars-loader": "^0.1.8",
+    "json-loader": "^0.5.1",
     "lodash": "^2.4.1",
     "memory-fs": "^0.2.0",
-    "bluebird": "^2.9.2"
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^0.4.0-beta.1",
+    "webpack": "^1.5.3",
+    "yaml-loader": "^0.1.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
