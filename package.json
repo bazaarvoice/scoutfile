@@ -1,6 +1,6 @@
 {
   "name": "bazaarvoice-scout",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "Tools to generate a custom scout file, as well as commonly useful modules",
   "main": "lib/index.js",
   "dependencies": {
