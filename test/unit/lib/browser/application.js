@@ -2,7 +2,6 @@
 
 var application = require('../../../../lib/browser/application');
 var BV = require('../../../../lib/browser/bv');
-console.log(BV)
 
 var config = { foo: 'bar' };
 var appName = 'MyApp';
@@ -79,7 +78,8 @@ module.exports = {
 
           myApp.processQueue(spy);
 
-          // even calling myApp's original definition of "render()" should call the new fn
+          // even calling myApp's original definition of render
+          // should call the new function
           myApp.originalRender();
           myApp.originalRender();
           myApp.originalRender();
@@ -105,7 +105,6 @@ module.exports = {
           var flag = 0;
 
           var fn = function () {
-            console.log('called')
             flag++;
           };
 
