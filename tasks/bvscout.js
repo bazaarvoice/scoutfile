@@ -6,7 +6,7 @@ var path = require('path');
 
 module.exports = function (grunt) {
   grunt.registerMultiTask(
-    'bazaarvoice-scout',
+    'bvscout',
     'Generate a scout file',
     function () {
       if (this.files.length < 1) {
@@ -19,7 +19,8 @@ module.exports = function (grunt) {
         var dest = file.dest || process.cwd() + '/scout.js';
 
         generator({
-          appModules: file.orig.src
+          appModules: file.orig.src,
+          pretty: !!file.orig.pretty
         }, function (err, output) {
           var stats = err && err.webpackStats;
           var error;

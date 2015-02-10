@@ -2,14 +2,15 @@
 
 module.exports = function (grunt) {
   grunt.initConfig({
-    'bazaarvoice-scout': {
+    'bvscout': {
       destDefaultsToCWD: {
         src: [
           {
             name : 'app-one',
             path : './app-one'
           }
-        ]
+        ],
+        pretty: true
       },
       destBundleWritten: {
         src: [
@@ -18,7 +19,8 @@ module.exports = function (grunt) {
             path : './app-one'
           }
         ],
-        dest: '../../../test/scratch/dest-bundle-written-actual.js'
+        dest: '../../../test/scratch/dest-bundle-written-actual.js',
+        pretty: true
       },
       exitcodeSuccess: {
         src: [
@@ -27,7 +29,8 @@ module.exports = function (grunt) {
             path : './app-one'
           }
         ],
-        dest: '../../../test/scratch/exitcode-success-actual.js'
+        dest: '../../../test/scratch/exitcode-success-actual.js',
+        pretty: true
       },
       exitcodeFailure: {
         src: [
@@ -36,7 +39,8 @@ module.exports = function (grunt) {
             path : './no-such-module'
           }
         ],
-        dest: '../../../test/scratch/exitcode-failure-actual.js'
+        dest: '../../../test/scratch/exitcode-failure-actual.js',
+        pretty: true
       },
       srcRequired: {},
       srcEntriesBuilt: {
@@ -50,7 +54,8 @@ module.exports = function (grunt) {
             path : './app-two'
           }
         ],
-        dest: '../../../test/scratch/src-entries-built-actual.js'
+        dest: '../../../test/scratch/src-entries-built-actual.js',
+        pretty: true
       },
       stdoutPrintedSuccess: {
         src: [
@@ -59,7 +64,8 @@ module.exports = function (grunt) {
             path : './app-one'
           }
         ],
-        dest: '../../../test/scratch/stdout-written-success-actual.js'
+        dest: '../../../test/scratch/stdout-written-success-actual.js',
+        pretty: true
       },
       stdoutPrintedFailure: {
         src: [
@@ -68,7 +74,8 @@ module.exports = function (grunt) {
             path : './no-such-module'
           }
         ],
-        dest: '../../../test/scratch/stdout-written-failure-actual.js'
+        dest: '../../../test/scratch/stdout-written-failure-actual.js',
+        pretty: true
       }
     }
   });

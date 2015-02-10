@@ -16,7 +16,7 @@ module.exports = {
             args: [
               '--gruntfile=' + TEST_GRUNTFILE,
               '--no-color',
-              'bazaarvoice-scout:srcRequired'
+              'bvscout:srcRequired'
             ]
           }, function (err, result) {
             test.equals(result.code, 6, 'Should exit with `Warning` exit code');
@@ -33,7 +33,7 @@ module.exports = {
             args: [
               '--gruntfile=' + TEST_GRUNTFILE,
               '--no-color',
-              'bazaarvoice-scout:srcEntriesBuilt'
+              'bvscout:srcEntriesBuilt'
             ]
           }, function (err, result) {
             if (err) {
@@ -71,7 +71,7 @@ module.exports = {
             args: [
               '--gruntfile=' + TEST_GRUNTFILE,
               '--no-color',
-              'bazaarvoice-scout:destDefaultsToCWD'
+              'bvscout:destDefaultsToCWD'
             ]
           }, function (err, result) {
             test.equals(result.code, 0, 'Should exit without errors');
@@ -92,7 +92,7 @@ module.exports = {
             args: [
               '--gruntfile=' + TEST_GRUNTFILE,
               '--no-color',
-              'bazaarvoice-scout:destBundleWritten'
+              'bvscout:destBundleWritten'
             ]
           }, function (err, result) {
             test.equals(result.code, 0, 'Should exit without errors');
@@ -115,7 +115,7 @@ module.exports = {
             args: [
               '--gruntfile=' + TEST_GRUNTFILE,
               '--no-color',
-              'bazaarvoice-scout:stdoutPrintedSuccess'
+              'bvscout:stdoutPrintedSuccess'
             ]
           }, function (err, result) {
             test.ok(
@@ -132,7 +132,7 @@ module.exports = {
             args: [
               '--gruntfile=' + TEST_GRUNTFILE,
               '--no-color',
-              'bazaarvoice-scout:stdoutPrintedFailure'
+              'bvscout:stdoutPrintedFailure'
             ]
           }, function (err, result) {
             test.ok(
@@ -153,7 +153,7 @@ module.exports = {
             args: [
               '--gruntfile=' + TEST_GRUNTFILE,
               '--no-color',
-              'bazaarvoice-scout:exitcodeSuccess'
+              'bvscout:exitcodeSuccess'
             ]
           }, function (err, result) {
             test.equals(result.code, 0, 'Should exit without errors');
@@ -167,7 +167,7 @@ module.exports = {
             args: [
               '--gruntfile=' + TEST_GRUNTFILE,
               '--no-color',
-              'bazaarvoice-scout:exitcodeFailure'
+              'bvscout:exitcodeFailure'
             ]
           }, function (err, result) {
             test.ok(result.code !== 0, 'Should exit with an error');

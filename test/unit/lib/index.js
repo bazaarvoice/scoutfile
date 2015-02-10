@@ -32,7 +32,8 @@ module.exports = {
                 }, {
                   path: './test/fixtures/lib/index/app-two',
                   name: 'app-two'
-                }]
+                }],
+                pretty: true
               }).
               then(function (src) {
                 test.ok(
@@ -75,7 +76,8 @@ module.exports = {
             appModules: [{
               name: 'fake',
               path:'./no/such/module'
-            }]
+            }],
+            pretty: true
           }).
           then(function () {
             test.ok(false, 'success handler should not be called');
@@ -105,7 +107,8 @@ module.exports = {
             appModules: [{
               name: 'fake',
               path:'./no/such/module'
-            }]
+            }],
+            pretty: true
           }, function (err, src) {
             test.ok(
               err instanceof Error,
@@ -131,7 +134,8 @@ module.exports = {
           });
 
         scout.generate({
-            appModules: []
+            appModules: [],
+            pretty: true
           }).
           then(function (src) {
             test.ok(
@@ -162,8 +166,9 @@ module.exports = {
         scout.generate({
             appModules: [{
               path: './test/fixtures/lib/index/app-that-throws',
-              name: 'app-that-throws'
-            }]
+              name: 'app-that-throws',
+            }],
+            pretty: true
           }).
           then(function (src) {
             test.doesNotThrow(function () {
