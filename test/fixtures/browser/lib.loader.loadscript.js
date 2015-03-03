@@ -1,0 +1,2 @@
+/* global libLoaderTestCallback: false */
+libLoaderTestCallback();

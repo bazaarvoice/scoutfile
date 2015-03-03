@@ -1,0 +1,7 @@
+node_modules
+example/node_modules
+*.swp
+.DS_Store
+test/scratch
+.idea
+*.iml

@@ -1,0 +1,18 @@
+{
+  "camelcase": true,
+  "curly": true,
+  "eqeqeq": true,
+  "immed": true,
+  "indent": 2,
+  "newcap": true,
+  "quotmark": true,
+  "undef": true,
+  "unused": true,
+  "maxlen": 80,
+  "strict": true,
+
+  "debug": true,
+  "eqnull": true,
+
+  "node": true
+}
