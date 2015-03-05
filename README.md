@@ -1,3 +1,7 @@
+[![NPM version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Dependency Status][daviddm-url]][daviddm-image]
+
 # Scout
 
 [Developer README](./CONTRIBUTING.md)
@@ -301,3 +305,10 @@ build configuration for which it is true.**
 
 Read more about flags and the Webpack `DefinePlugin`
 [here](http://webpack.github.io/docs/list-of-plugins.html#defineplugin).
+
+[npm-url]: https://npmjs.org/package/scoutfile
+[npm-image]: https://badge.fury.io/js/scoutfile.svg
+[travis-url]: https://travis-ci.org/bazaarvoice/scoutfile
+[travis-image]: https://travis-ci.org/bazaarvoice/scoutfile.svg?branch=master
+[daviddm-url]: https://david-dm.org/bazaarvoice/scoutfile.svg?theme=shields.io
+[daviddm-image]: https://david-dm.org/bazaarvoice/scoutfile
