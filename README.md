@@ -14,7 +14,7 @@ Node.
 
 ## Roadmap & Issues
 
-See the [issues](./issues) page for details on current development and future
+See the [issues](//github.com/bazaarvoice/scoutfile/issues/) page for details on current development and future
 plans. If there is scout file functionality that your project needs and is not
 provided currently, please open an issue. Bug reports are also appreciated.
 
