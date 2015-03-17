@@ -7,6 +7,7 @@
     "async": "^0.9.0",
     "bluebird": "^2.9.2",
     "css-loader": "^0.9.1",
+    "domready": "^0.3.0",
     "file-loader": "^0.8.1",
     "handlebars-loader": "^0.1.8",
     "json-loader": "^0.5.1",

@@ -10,7 +10,8 @@ nodeunit.run({
   'lib/util': require('../../unit/lib/browser/util'),
   'lib/ie': require('../../unit/lib/browser/ie'),
   'lib/cookie': require('../../unit/lib/browser/cookie'),
-  'lib/evented': require('../../unit/lib/browser/evented')
+  'lib/evented': require('../../unit/lib/browser/evented'),
+  'lib/domReady': require('../../unit/lib/browser/domReady')
 }, null, function (err, result) {
   if (window.onTestsComplete) {
     window.onTestsComplete(err, result);
