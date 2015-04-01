@@ -193,6 +193,23 @@ module.exports = {
         var timeout = setTimeout(function () {
           test.done(new Error('script load error timed out'));
         }, 1100);
+      },
+
+      '`document` has correct value in loaded script': function (test) {
+        var actualDoc;
+
+        global.libLoaderTestCallback = function (doc) {
+          actualDoc = doc;
+        };
+
+        loader.loadScript('/lib.loader.document-is-wrong-in-ie8.js',
+          function () {
+            test.strictEqual(
+              actualDoc,
+              window.document,
+              '`document` should be === `window.document`');
+            test.done();
+          });
       }
     },
 
