@@ -73,6 +73,26 @@ module.exports = {
               test.done();
             }, test.done);
           }
+        },
+        'options.appConfig': {
+          'enables config module': function (test) {
+            scout.generate({
+              appModules: [{
+                path: './test/fixtures/lib/index/app-config',
+                name: 'app-config'
+              }],
+              appConfig: {
+                myAppConfig: true
+              }
+            }).
+            then(function (src) {
+              test.ok(
+                src.indexOf('myAppConfig') > -1,
+                'app config should be included'
+              );
+              test.done();
+            });
+          }
         }
       }
     },
