@@ -113,7 +113,7 @@ loader.loadStyleSheet(config.appCSS);
 This project provides modules for common tasks, such as reading and writing
 cookies; loading JavaScript and CSS; and queueing JavaScript calls from the
 host site until the core application resources arrive. [Learn more about the
-modules provided by this project](./docs/modules.md).
+modules provided by this project][modules].
 
 ### Including non-JS resources
 
@@ -306,9 +306,27 @@ build configuration for which it is true.**
 Read more about flags and the Webpack `DefinePlugin`
 [here](http://webpack.github.io/docs/list-of-plugins.html#defineplugin).
 
+#### Including configuration information
+
+To specify configuration data that should be available within the generated
+scout file, add an `appConfig` property to the config you provide to the
+generator (or the config for each grunt task).
+
+```
+appConfig : {
+  reviews : true,
+  comments : false,
+  customerName : 'atticus'
+}
+```
+
+See the [modules][modules] documentation for details on how to access this
+data via the `appConfig` module.
+
 [npm-url]: https://npmjs.org/package/scoutfile
 [npm-image]: https://badge.fury.io/js/scoutfile.svg
 [travis-url]: https://travis-ci.org/bazaarvoice/scoutfile
 [travis-image]: https://travis-ci.org/bazaarvoice/scoutfile.svg?branch=master
 [daviddm-url]: https://david-dm.org/bazaarvoice/scoutfile.svg?theme=shields.io
 [daviddm-image]: https://david-dm.org/bazaarvoice/scoutfile
+[modules]: ./docs/modules.md

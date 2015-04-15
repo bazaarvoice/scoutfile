@@ -79,6 +79,41 @@ APP.MyApp.render({ productId : 1 });
   original definition of the `configure` method. Queued items are processed
   synchronously, as they are not expected to have any DOM implications.
 
+## appConfig
+
+The appConfig module provides a way to include in-memory configuration
+information in your scout file. For example, you may build different scout
+files to support different products or customers, where product- or
+customer-specific configuration changes even though the fundamental contents
+of the scout file do not.
+
+In this case, you can provide this configuration information at build time
+using the `appConfig` option:
+
+```js
+scout.generate({
+  appModules: [
+    // ...
+  ],
+  appConfig: {
+    reviews: true,
+    comments: false,
+    customerName: 'atticus'
+  }
+});
+```
+
+You can then access the provided configuration using the `appConfig` module:
+
+
+```js
+var appConfig = require('scoutfile/lib/browser/appConfig');
+
+if (appConfig.reviews) {
+  // ...
+}
+```
+
 ## cookie
 
 The cookie module provides methods for interacting with browser cookies.
