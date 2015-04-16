@@ -105,7 +105,6 @@ scout.generate({
 
 You can then access the provided configuration using the `appConfig` module:
 
-
 ```js
 var appConfig = require('scoutfile/lib/browser/appConfig');
 

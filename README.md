@@ -320,8 +320,9 @@ appConfig : {
 }
 ```
 
-See the [modules][modules] documentation for details on how to access this
-data via the `appConfig` module.
+The value you provide here should be an object that can be serialized using
+`JSON.stringify`. See the [modules][modules] documentation for details on how
+to access this data via the `appConfig` module.
 
 [npm-url]: https://npmjs.org/package/scoutfile
 [npm-image]: https://badge.fury.io/js/scoutfile.svg
