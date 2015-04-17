@@ -200,6 +200,32 @@ module.exports = {
             test.done();
           });
         }
+      },
+
+      appConfig: {
+        'includes specified app config': function (test) {
+          grunt.util.spawn({
+            grunt: true,
+            args: [
+              '--gruntfile=' + TEST_GRUNTFILE,
+              '--no-color',
+              'scoutfile:appConfig'
+            ]
+          }, function (err) {
+            if (err) {
+              return test.done(err);
+            }
+
+            var actual = fs.readFileSync('./test/scratch/appConfig-actual.js', {
+              encoding: 'utf8'
+            });
+
+            test.ok(actual.indexOf('{"it":"works"}') >= 0,
+              'should contain app config');
+
+            test.done();
+          });
+        }
       }
     }
   }

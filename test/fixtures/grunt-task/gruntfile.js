@@ -87,6 +87,17 @@ module.exports = function (grunt) {
         dest: '../../../test/scratch/namespace-actual.js',
         pretty: true,
         namespace: 'NAMESPACE'
+      },
+      appConfig: {
+        src: [
+          {
+            name : 'appConfig',
+            path : './app-config'
+          }
+        ],
+        dest: '../../../test/scratch/appConfig-actual.js',
+        pretty: true,
+        appConfig: { it : 'works' }
       }
     }
   });

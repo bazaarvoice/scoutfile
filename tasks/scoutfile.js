@@ -22,7 +22,8 @@ module.exports = function (grunt) {
           appModules: file.orig.src,
           pretty: !!file.orig.pretty,
           flags: file.orig.flags,
-          namespace: file.orig.namespace
+          namespace: file.orig.namespace,
+          appConfig : file.orig.appConfig
         }, function (err, output) {
           var stats = err && err.webpackStats;
           var error;
