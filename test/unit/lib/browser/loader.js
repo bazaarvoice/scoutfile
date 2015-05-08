@@ -83,6 +83,19 @@ module.exports = {
               );
               test.done();
             }
+          },
+
+          'options.attributes': {
+            'sets attributes on the script tag': function (test) {
+              loader.loadScript('/lib.loader.loadscript.js', {
+                attributes : {
+                  'data-main': 'foo.js'
+                }
+              }, function () {
+                test.ok(document.querySelector('script[data-main="foo.js"]'));
+                test.done();
+              });
+            }
           }
         },
 
