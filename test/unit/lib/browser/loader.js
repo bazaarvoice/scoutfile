@@ -87,13 +87,16 @@ module.exports = {
 
           'options.attributes': {
             'sets attributes on the script tag': function (test) {
-              loader.loadScript('/lib.loader.loadscript.js', {
+              global.libLoaderAttributeTestCallback = function () {
+                global.libLoaderAttributeTestCallback = function () {};
+                test.ok(document.querySelector('script[data-main="foo.js"]'));
+                test.done();
+              };
+
+              loader.loadScript('/lib.loader.loadscript-attribute.js', {
                 attributes : {
                   'data-main': 'foo.js'
                 }
-              }, function () {
-                test.ok(document.querySelector('script[data-main="foo.js"]'));
-                test.done();
               });
             }
           }
