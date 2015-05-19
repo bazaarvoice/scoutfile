@@ -290,6 +290,19 @@ module.exports = {
               );
               test.done();
             }
+          },
+
+          'options.attributes': {
+            'sets attributes on the link tag': function (test) {
+              loader.loadStyleSheet('/lib.loader.loadstylesheet.css', {
+                attributes : {
+                  id : 'loaded-css'
+                }
+              }, function () {
+                test.ok(document.querySelector('#loaded-css'));
+                test.done();
+              });
+            }
           }
         },
 
