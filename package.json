@@ -9,7 +9,6 @@
     "css-loader": "^0.12.0",
     "domready": "^0.3.0",
     "file-loader": "^0.8.1",
-    "ghooks": "^0.2.5",
     "grunt-contrib-jshint": "^0.11.2",
     "grunt-jscs": "^1.8.0",
     "handlebars-loader": "^1.0.2",
