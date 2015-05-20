@@ -98,6 +98,33 @@ module.exports = function (grunt) {
         dest: '../../../test/scratch/appConfig-actual.js',
         pretty: true,
         appConfig: { it : 'works' }
+      },
+      banner: {
+        src: [
+          {
+            name : 'banner',
+            path : './banner'
+          }
+        ],
+        dest: '../../../test/scratch/banner-actual.js',
+        banner: {
+          content : 'it works'
+        }
+      },
+      bannerRaw: {
+        src: [
+          {
+            name : 'banner',
+            path : './banner'
+          }
+        ],
+        dest: '../../../test/scratch/bannerRaw-actual.js',
+        banner: {
+          content : 'it works',
+          options : {
+            raw : true
+          }
+        }
       }
     }
   });

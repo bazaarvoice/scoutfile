@@ -93,6 +93,82 @@ module.exports = {
               test.done();
             });
           }
+        },
+        'options.banner': {
+          'as an object': {
+            'includes banner as comment by default': function (test) {
+              scout.generate({
+                appModules: [{
+                  path: './test/fixtures/lib/index/banner',
+                  name: 'banner'
+                }],
+                banner: {
+                  content: 'it works'
+                }
+              }).
+              then(function (src) {
+                test.ok(
+                  src.indexOf('/*! it works */') > -1,
+                  'banner should be included as a comment'
+                );
+                test.done();
+              });
+            },
+            'includes raw banner if specified': function (test) {
+              scout.generate({
+                appModules: [{
+                  path: './test/fixtures/lib/index/banner',
+                  name: 'banner'
+                }],
+                banner: {
+                  content: '"it works"',
+                  options: {
+                    raw: true
+                  }
+                }
+              }).
+              then(function (src) {
+                test.ok(
+                  src.match(/^"it works"/),
+                  'banner should be included raw'
+                );
+                test.done();
+              });
+            }
+          },
+          'as an array': {
+            'includes each banner as specified': function (test) {
+              scout.generate({
+                appModules: [{
+                  path: './test/fixtures/lib/index/banner',
+                  name: 'banner'
+                }],
+                banner: [
+                  {
+                    content: 'comment banner'
+                  },
+                  {
+                    content: '"raw banner"',
+                    options: {
+                      raw: true
+                    }
+                  }
+                ]
+              }).
+              then(function (src) {
+                test.ok(
+                  src.indexOf('/*! comment banner */') > -1,
+                  'comment banner should be included as a comment'
+                );
+
+                test.ok(
+                  src.match(/^"raw banner"/),
+                  'raw banner should be included raw'
+                );
+                test.done();
+              });
+            }
+          }
         }
       }
     },
