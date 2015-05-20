@@ -326,7 +326,9 @@ to access this data via the `appConfig` module.
 
 #### Including a banner
 
-To specify one or more "banners" to appear at the top of your file, add a banner property to the config you provide to the generator (or the config for each grunt task).
+To specify one or more "banners" to appear at the top of your file, add a
+banner property to the config you provide to the generator (or the config
+for each grunt task). 
 
 ```
 banner : {
