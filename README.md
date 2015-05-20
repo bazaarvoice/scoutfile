@@ -324,6 +324,47 @@ The value you provide here should be an object that can be serialized using
 `JSON.stringify`. See the [modules][modules] documentation for details on how
 to access this data via the `appConfig` module.
 
+#### Including a banner
+
+To specify one or more "banners" to appear at the top of your file, add a
+banner property to the config you provide to the generator (or the config
+for each grunt task). 
+
+```
+banner : {
+  content : 'Copyright 2015 Bazaarvoice. All rights reserved.'
+}
+```
+
+By default, a banner will be inserted as a comment at the top of the
+generated file. You can provide an `options` property to insert raw,
+uncommented content instead:
+
+```
+banner : {
+  content : '"version:697-test-8e037c82-e49a-4136-ade1-fbe08c281a24";',
+  options : {
+    raw : true
+  }
+}
+```
+
+You can also provide an array of banner objects:
+
+```
+banner : [
+  {
+    content : '"version:697-test-8e037c82-e49a-4136-ade1-fbe08c281a24";',
+    options : {
+      raw : true
+    }
+  },
+  {
+    content : 'Copyright 2015 Bazaarvoice. All rights reserved'.
+  }
+];
+```
+
 [npm-url]: https://npmjs.org/package/scoutfile
 [npm-image]: https://badge.fury.io/js/scoutfile.svg
 [travis-url]: https://travis-ci.org/bazaarvoice/scoutfile

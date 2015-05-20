@@ -226,6 +226,55 @@ module.exports = {
             test.done();
           });
         }
+      },
+
+      banner: {
+        'includes the banner as a comment by default': function (test) {
+          grunt.util.spawn({
+            grunt: true,
+            args: [
+              '--gruntfile=' + TEST_GRUNTFILE,
+              '--no-color',
+              'scoutfile:banner'
+            ]
+          }, function (err) {
+            if (err) {
+              return test.done(err);
+            }
+
+            var actual = fs.readFileSync('./test/scratch/banner-actual.js', {
+              encoding: 'utf8'
+            });
+
+            test.ok(actual.indexOf('/*! it works */') >= 0,
+              'should contain banner');
+
+            test.done();
+          });
+        },
+        'includes the raw banner if specified': function (test) {
+          grunt.util.spawn({
+            grunt: true,
+            args: [
+              '--gruntfile=' + TEST_GRUNTFILE,
+              '--no-color',
+              'scoutfile:bannerRaw'
+            ]
+          }, function (err) {
+            if (err) {
+              return test.done(err);
+            }
+
+            var actual = fs.readFileSync('./test/scratch/bannerRaw-actual.js', {
+              encoding: 'utf8'
+            });
+
+            test.ok(actual.match(/^"it works";/),
+              'should contain banner');
+
+            test.done();
+          });
+        }
       }
     }
   }
