@@ -120,7 +120,7 @@ module.exports = function (grunt) {
         ],
         dest: '../../../test/scratch/bannerRaw-actual.js',
         banner: {
-          content : 'it works',
+          content : '"it works";',
           options : {
             raw : true
           }

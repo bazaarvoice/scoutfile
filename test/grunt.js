@@ -269,7 +269,7 @@ module.exports = {
               encoding: 'utf8'
             });
 
-            test.ok(actual.match(/^it works/),
+            test.ok(actual.match(/^"it works";/),
               'should contain banner');
 
             test.done();
