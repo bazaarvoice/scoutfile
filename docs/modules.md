@@ -217,6 +217,22 @@ both `loadScript` and `loadStyleSheet`, the callback will not be executed on
 failure in old IE, and the returned promise will not be rejected on failure in
 old IE.
 
+### loadScript options
+
+- **attributes**: an object containing key/value pairs to be used as
+attributes on the created `<script>` element.
+- **timeout**: the time in milliseconds before the loading should be
+considered failed. Defaults to 1000ms.
+
+### loadStyleSheet options
+
+- **attributes**: an object containing key/value pairs to be used as
+attributes on the created `<link>` element.
+- **injectionNode**: a DOM node into which the `<link>` element should be
+placed. The default insertion point is after the first `<script>` element on the page.
+- **timeout**: the time in milliseconds before the loading should be
+considered failed. Defaults to 1000ms.
+
 ## namespace
 
 The namespace module provides access to the "namespace" for the scout file. By
