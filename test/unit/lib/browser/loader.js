@@ -324,6 +324,19 @@ module.exports = {
                 'should throw if `options.injectionNode` is not a DOM node'
               );
               test.done();
+            },
+            'should throw if appending fails': function (test) {
+              var container = document.createElement('div');
+              container.appendChild = function () {
+                throw 'Intentional sabotage!';
+              };
+
+              loader.loadStyleSheet('/lib.loader.loadstylesheet.css', {
+                injectionNode : container
+              }, function (result) {
+                test.ok(result instanceof Error);
+                test.done();
+              });
             }
           }
         },
