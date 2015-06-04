@@ -303,6 +303,28 @@ module.exports = {
                 test.done();
               });
             }
+          },
+
+          'options.injectionNode': {
+            'defines injection point for link tag': function (test) {
+              var container = document.createElement('div');
+              loader.loadStyleSheet('/lib.loader.loadstylesheet.css', {
+                injectionNode : container
+              }, function () {
+                test.ok(container.getElementsByTagName('link').length > 0);
+                test.done();
+              });
+            },
+            'must be a DOM node': function (test) {
+              test.throws(function () {
+                  loader.loadStyleSheet('/lib.loader.loadstylesheet.css', {
+                    injectionNode : false
+                  });
+                }, /`options.injectionNode` must be a DOM node/,
+                'should throw if `options.injectionNode` is not a DOM node'
+              );
+              test.done();
+            }
           }
         },
 
