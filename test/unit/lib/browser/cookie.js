@@ -16,8 +16,8 @@ module.exports = {
       },
 
       'creates a cookie': function (test) {
-        cookie.create('testCreate', 'cookie monster', 3);
-        test.ok(global.document.cookie.match('testCreate=cookie%20monster'));
+        cookie.create('test create', 'cookie monster', 3);
+        test.ok(global.document.cookie.match('test%20create=cookie%20monster'));
         test.done();
       }
     },
