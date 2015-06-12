@@ -11,7 +11,7 @@ module.exports = {
   'lib/browser/cookie': {
     'create': {
       tearDown: function (cb) {
-        deleteCookie('testCreate');
+        deleteCookie('test%20create');
         cb();
       },
 
@@ -24,17 +24,17 @@ module.exports = {
 
     'read': {
       setUp: function (cb) {
-        document.cookie = 'testRead=Hello%20World';
+        document.cookie = 'test%20read=Hello%20World';
         cb();
       },
 
       tearDown: function (cb) {
-        deleteCookie('testRead');
+        deleteCookie('test%20read');
         cb();
       },
 
       'reads a cookie': function (test) {
-        var c = cookie.read('testRead');
+        var c = cookie.read('test read');
         test.equal(c, 'Hello World');
         test.done();
       }
@@ -42,12 +42,12 @@ module.exports = {
 
     'remove': {
       setUp: function (cb) {
-        document.cookie = 'testDelete=1';
+        document.cookie = 'test%20delete=1';
         cb();
       },
 
       tearDown: function (cb) {
-        deleteCookie('testDelete');
+        deleteCookie('test%20delete');
         cb();
       },
 
@@ -58,8 +58,8 @@ module.exports = {
           return test.done();
         }
 
-        cookie.remove('testDelete');
-        test.ok(!global.document.cookie.match('testDelete'));
+        cookie.remove('test delete');
+        test.ok(!global.document.cookie.match('test%20delete'));
         test.done();
       }
     }
