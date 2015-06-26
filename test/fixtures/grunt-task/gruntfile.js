@@ -2,12 +2,12 @@
 
 module.exports = function (grunt) {
   grunt.initConfig({
-    'scoutfile': {
+    scoutfile: {
       destDefaultsToCWD: {
         src: [
           {
-            name : 'app-one',
-            path : './app-one'
+            name: 'app-one',
+            path: './app-one'
           }
         ],
         pretty: true
@@ -15,8 +15,8 @@ module.exports = function (grunt) {
       destBundleWritten: {
         src: [
           {
-            name : 'app-one',
-            path : './app-one'
+            name: 'app-one',
+            path: './app-one'
           }
         ],
         dest: '../../../test/scratch/dest-bundle-written-actual.js',
@@ -25,8 +25,8 @@ module.exports = function (grunt) {
       exitcodeSuccess: {
         src: [
           {
-            name : 'app-one',
-            path : './app-one'
+            name: 'app-one',
+            path: './app-one'
           }
         ],
         dest: '../../../test/scratch/exitcode-success-actual.js',
@@ -35,8 +35,8 @@ module.exports = function (grunt) {
       exitcodeFailure: {
         src: [
           {
-            name : 'no-such-module',
-            path : './no-such-module'
+            name: 'no-such-module',
+            path: './no-such-module'
           }
         ],
         dest: '../../../test/scratch/exitcode-failure-actual.js',
@@ -46,12 +46,12 @@ module.exports = function (grunt) {
       srcEntriesBuilt: {
         src: [
           {
-            name : 'app-one',
-            path : './app-one'
+            name: 'app-one',
+            path: './app-one'
           },
           {
-            name : 'app-two',
-            path : './app-two'
+            name: 'app-two',
+            path: './app-two'
           }
         ],
         dest: '../../../test/scratch/src-entries-built-actual.js',
@@ -60,8 +60,8 @@ module.exports = function (grunt) {
       stdoutPrintedSuccess: {
         src: [
           {
-            name : 'app-one',
-            path : './app-one'
+            name: 'app-one',
+            path: './app-one'
           }
         ],
         dest: '../../../test/scratch/stdout-written-success-actual.js',
@@ -70,8 +70,8 @@ module.exports = function (grunt) {
       stdoutPrintedFailure: {
         src: [
           {
-            name : 'no-such-module',
-            path : './no-such-module'
+            name: 'no-such-module',
+            path: './no-such-module'
           }
         ],
         dest: '../../../test/scratch/stdout-written-failure-actual.js',
@@ -80,8 +80,8 @@ module.exports = function (grunt) {
       namespace: {
         src: [
           {
-            name : 'namespace',
-            path : './namespace'
+            name: 'namespace',
+            path: './namespace'
           }
         ],
         dest: '../../../test/scratch/namespace-actual.js',
@@ -91,38 +91,38 @@ module.exports = function (grunt) {
       appConfig: {
         src: [
           {
-            name : 'appConfig',
-            path : './app-config'
+            name: 'appConfig',
+            path: './app-config'
           }
         ],
         dest: '../../../test/scratch/appConfig-actual.js',
         pretty: true,
-        appConfig: { it : 'works' }
+        appConfig: { it: 'works' }
       },
       banner: {
         src: [
           {
-            name : 'banner',
-            path : './banner'
+            name: 'banner',
+            path: './banner'
           }
         ],
         dest: '../../../test/scratch/banner-actual.js',
         banner: {
-          content : 'it works'
+          content: 'it works'
         }
       },
       bannerRaw: {
         src: [
           {
-            name : 'banner',
-            path : './banner'
+            name: 'banner',
+            path: './banner'
           }
         ],
         dest: '../../../test/scratch/bannerRaw-actual.js',
         banner: {
-          content : '"it works";',
-          options : {
-            raw : true
+          content: '"it works";',
+          options: {
+            raw: true
           }
         }
       }

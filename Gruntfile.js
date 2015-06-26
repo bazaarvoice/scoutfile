@@ -1,7 +1,6 @@
 'use strict';
 
 var path = require('path');
-var fs = require('fs');
 
 var jsdom = require('jsdom');
 var WebpackDevServer = require('webpack-dev-server');
@@ -9,12 +8,11 @@ var webpack = require('webpack');
 
 module.exports = function (grunt) {
   grunt.initConfig({
-    jshint: {
-      options: {
-        jshintrc: true,
-      },
-      all: [
+    eslint: {
+      target: [
+        'Gruntfile.js',
         'lib/**/*.js',
+        'tasks/**/*.js',
         'test/**/*.js',
         '!test/scratch/**/*',
         '!test/fixtures/browser/nodeunit.js'
@@ -28,29 +26,13 @@ module.exports = function (grunt) {
         '!test/unit/lib/browser/**/*'
       ],
       options: {
-        reporter: 'minimal'
-      }
-    },
-    jscs: {
-      all: [
-        'lib/**/*.js',
-        'test/**/*.js',
-        '!lib/browser/util.js',
-        '!test/fixtures/browser/nodeunit.js',
-        '!test/scratch/**/*'
-      ],
-      options: {
-        config: '.jscsrc'
+        reporter: 'default'
       }
     }
   });
 
   grunt.registerTask('nodeunit-browser', function () {
     var done = this.async();
-    var html = fs.readFileSync(
-      path.resolve(__dirname, 'test/fixtures/browser/index.html'),
-      { encoding : 'utf8' }
-    );
 
     serveTests(function (err, server) {
       if (err) {
@@ -62,14 +44,24 @@ module.exports = function (grunt) {
 
       jsdom.env({
         url: 'http://localhost:8080',
-        created: function (err, window) {
+        created: function (createdErr, window) {
+          if (createdErr) {
+            grunt.log.error(createdErr);
+            return done(createdErr);
+          }
+
           jsdom.getVirtualConsole(window).on('log', function (msg) {
             console.log('jsdom:', msg);
           });
 
           window.isJsdom = true;
 
-          window.onTestsComplete = function (err, results) {
+          window.onTestsComplete = function (onTestsCompleteErr, results) {
+            if (onTestsCompleteErr) {
+              grunt.log.error(onTestsCompleteErr);
+              return done(onTestsCompleteErr);
+            }
+
             var $ = window.$;
             var resultText = $('#nodeunit-testresult').text();
 
@@ -98,7 +90,9 @@ module.exports = function (grunt) {
   });
 
   function serveTests (cb) {
-    var webpackTestConfig = require('./test/fixtures/browser/unit-tests.webpack.config.js');
+    var webpackTestConfig = require(
+      './test/fixtures/browser/unit-tests.webpack.config.js'
+    );
     var compiler = webpack(webpackTestConfig);
 
     var server = new WebpackDevServer(compiler, {
@@ -116,10 +110,9 @@ module.exports = function (grunt) {
     });
   }
 
-  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
-  grunt.loadNpmTasks('grunt-jscs');
 
-  grunt.registerTask('test', ['jshint', 'nodeunit', 'nodeunit-browser']);
-  grunt.registerTask('default', ['test', 'jscs']);
+  grunt.registerTask('test', ['eslint', 'nodeunit', 'nodeunit-browser']);
+  grunt.registerTask('default', ['test']);
 };

@@ -1,3 +1,4 @@
+/* eslint handle-callback-err: 0 */
 'use strict';
 
 var fs = require('fs');
@@ -105,7 +106,7 @@ module.exports = {
 
             test.done();
           });
-        },
+        }
       },
 
       stdout: {

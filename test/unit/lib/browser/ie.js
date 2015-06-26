@@ -1,11 +1,10 @@
 'use strict';
 
 module.exports = {
-  'lib/ie' : {
-    'does exist' : function (test) {
-      var ie;
+  'lib/ie': {
+    'does exist': function (test) {
       test.doesNotThrow(function () {
-        ie = require('../../../../lib/browser/ie');
+        require('../../../../lib/browser/ie');
       });
       test.done();
     }

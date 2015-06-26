@@ -16,9 +16,9 @@ module.exports = {
     filename: '[name].bundle.js'
   },
   node: {
-    /* jshint camelcase: false */
+    /* eslint-disable camelcase */
     child_process: 'empty',
-    /* jshint camelcase: true */
+    /* eslint-enable camelcase */
     fs: 'empty',
     module: 'empty'
   },

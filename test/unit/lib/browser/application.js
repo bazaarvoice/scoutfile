@@ -43,7 +43,7 @@ module.exports = {
       }
     },
 
-    'instance': {
+    instance: {
       'render method': {
         setUp: function (cb) {
           application(appName, config);

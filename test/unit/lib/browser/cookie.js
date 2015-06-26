@@ -4,12 +4,12 @@ var cookie = require('../../../../lib/browser/cookie');
 var global = require('../../../../lib/browser/global');
 
 function deleteCookie (name) {
-  document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+  global.document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
 }
 
 module.exports = {
   'lib/browser/cookie': {
-    'create': {
+    create: {
       tearDown: function (cb) {
         deleteCookie('test%20create');
         cb();
@@ -22,9 +22,9 @@ module.exports = {
       }
     },
 
-    'read': {
+    read: {
       setUp: function (cb) {
-        document.cookie = 'test%20read=Hello%20World';
+        global.document.cookie = 'test%20read=Hello%20World';
         cb();
       },
 
@@ -40,9 +40,9 @@ module.exports = {
       }
     },
 
-    'remove': {
+    remove: {
       setUp: function (cb) {
-        document.cookie = 'test%20delete=1';
+        global.document.cookie = 'test%20delete=1';
         cb();
       },
 

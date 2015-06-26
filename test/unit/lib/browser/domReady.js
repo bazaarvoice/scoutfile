@@ -8,7 +8,7 @@ var domReady = require('../../../../lib/browser/domReady');
 
 module.exports = {
   'lib/browser/domReady': {
-    'exists': function (test) {
+    exists: function (test) {
       test.equal(typeof domReady, 'function');
       test.done();
     }

@@ -1,3 +1,4 @@
+/* eslint no-use-before-define: 0 */
 'use strict';
 
 var global = require('../../../../lib/browser/global');
@@ -20,9 +21,9 @@ function cleanUpLinks() {
 
 module.exports = {
   'lib/loader': {
-    'loadScript': {
-      'arguments': {
-        'url': {
+    loadScript: {
+      arguments: {
+        url: {
           'is required': function (test) {
             test.throws(function () {
               loader.loadScript();
@@ -40,7 +41,7 @@ module.exports = {
           }
         },
 
-        'options': {
+        options: {
           'is optional': function (test) {
             global.libLoaderTestCallback = function () {
               global.libLoaderTestCallback = function () {};
@@ -89,12 +90,12 @@ module.exports = {
             'sets attributes on the script tag': function (test) {
               global.libLoaderAttributeTestCallback = function () {
                 global.libLoaderAttributeTestCallback = function () {};
-                test.ok(document.querySelector('script[data-main="foo.js"]'));
+                test.ok(doc.querySelector('script[data-main="foo.js"]'));
                 test.done();
               };
 
               loader.loadScript('/lib.loader.loadscript-attribute.js', {
-                attributes : {
+                attributes: {
                   'data-main': 'foo.js'
                 }
               });
@@ -102,7 +103,7 @@ module.exports = {
           }
         },
 
-        'callback': {
+        callback: {
           'is optional': function (test) {
             global.libLoaderTestCallback = function () {
               test.done();
@@ -212,10 +213,10 @@ module.exports = {
       },
 
       '`document` has correct value in loaded script': function (test) {
-        global.libLoaderTestCallback = function (doc) {
+        global.libLoaderTestCallback = function (providedDoc) {
           test.strictEqual(
+            providedDoc,
             doc,
-            window.document,
             '`document` should be === `window.document`');
           test.done();
         };
@@ -224,14 +225,14 @@ module.exports = {
       }
     },
 
-    'loadStyleSheet': {
+    loadStyleSheet: {
       tearDown: function (callback) {
         cleanUpLinks();
         callback();
       },
 
-      'arguments': {
-        'url': {
+      arguments: {
+        url: {
           'is required': function (test) {
             test.throws(function () {
               loader.loadStyleSheet();
@@ -249,7 +250,7 @@ module.exports = {
           }
         },
 
-        'options': {
+        options: {
           'is optional': function (test) {
             test.doesNotThrow(function () {
               loader.loadStyleSheet('/lib.loader.loadstylesheet.css');
@@ -295,11 +296,11 @@ module.exports = {
           'options.attributes': {
             'sets attributes on the link tag': function (test) {
               loader.loadStyleSheet('/lib.loader.loadstylesheet.css', {
-                attributes : {
-                  id : 'loaded-css'
+                attributes: {
+                  id: 'loaded-css'
                 }
               }, function () {
-                test.ok(document.querySelector('#loaded-css'));
+                test.ok(doc.querySelector('#loaded-css'));
                 test.done();
               });
             }
@@ -307,9 +308,9 @@ module.exports = {
 
           'options.injectionNode': {
             'defines injection point for link tag': function (test) {
-              var container = document.createElement('div');
+              var container = doc.createElement('div');
               loader.loadStyleSheet('/lib.loader.loadstylesheet.css', {
-                injectionNode : container
+                injectionNode: container
               }, function () {
                 test.ok(container.getElementsByTagName('link').length > 0);
                 test.done();
@@ -318,7 +319,7 @@ module.exports = {
             'must be a DOM node': function (test) {
               test.throws(function () {
                   loader.loadStyleSheet('/lib.loader.loadstylesheet.css', {
-                    injectionNode : false
+                    injectionNode: false
                   });
                 }, /`options.injectionNode` must be a DOM node/,
                 'should throw if `options.injectionNode` is not a DOM node'
@@ -326,13 +327,13 @@ module.exports = {
               test.done();
             },
             'should throw if appending fails': function (test) {
-              var container = document.createElement('div');
+              var container = doc.createElement('div');
               container.appendChild = function () {
-                throw 'Intentional sabotage!';
+                throw new Error('Intentional sabotage!');
               };
 
               loader.loadStyleSheet('/lib.loader.loadstylesheet.css', {
-                injectionNode : container
+                injectionNode: container
               }, function (result) {
                 test.ok(result instanceof Error);
                 test.done();
@@ -341,7 +342,7 @@ module.exports = {
           }
         },
 
-        'callback': {
+        callback: {
           'is optional': function (test) {
             test.doesNotThrow(function () {
               loader.loadStyleSheet('/lib.loader.loadstylesheet.css', {});

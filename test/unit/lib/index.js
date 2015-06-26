@@ -5,9 +5,9 @@ var fs = require('fs');
 var scout = require('../../../lib/index');
 
 module.exports = {
-  'generate': {
-    'arguments': {
-      'options': {
+  generate: {
+    arguments: {
+      options: {
         'is required': function (test) {
           test.throws(function () {
             scout.generate();
@@ -194,7 +194,7 @@ module.exports = {
         scout.generate({
             appModules: [{
               name: 'fake',
-              path:'./no/such/module'
+              path: './no/such/module'
             }],
             pretty: true
           }).
@@ -225,7 +225,7 @@ module.exports = {
         scout.generate({
             appModules: [{
               name: 'fake',
-              path:'./no/such/module'
+              path: './no/such/module'
             }],
             pretty: true
           }, function (err, src) {
@@ -277,7 +277,7 @@ module.exports = {
         scout.generate({
             appModules: [{
               path: './test/fixtures/lib/index/app-that-throws',
-              name: 'app-that-throws',
+              name: 'app-that-throws'
             }],
             pretty: true
           }).
@@ -285,9 +285,9 @@ module.exports = {
             test.doesNotThrow(function () {
                 var consoleError = console.error;
                 console.error = function () {};
-                /* jshint evil: true */
+                /* eslint-disable no-new-func */
                 (new Function(src))();
-                /* jshint evil: false */
+                /* eslint-enable no-new-func */
                 console.error = consoleError;
               }, 'exceptions should not bubble out of the scout');
             test.done();
