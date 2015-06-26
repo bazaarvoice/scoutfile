@@ -1,7 +1,19 @@
-node_modules
-example/node_modules
+
+# Various OS gunk.
 *.swp
 .DS_Store
+
+# NPM.
+npm-debug.log
+node_modules
+example/node_modules
+
+# Transient test files.
 test/scratch
+
+# IntelliJ
 .idea
 *.iml
+
+# Sublime Text
+*.sublime-*
