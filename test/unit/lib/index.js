@@ -11,7 +11,7 @@ module.exports = {
         'is required': function (test) {
           test.throws(function () {
             scout.generate();
-          }, /`options` is required/);
+          }, '`options` is required');
           test.done();
         },
         'options.src': {
@@ -170,6 +170,57 @@ module.exports = {
             }
           }
         }
+      }
+    },
+    sourceMaps: {
+      'webpackOptions.devtool=source-map returns array': function (test) {
+        scout.generate({
+          appModules: [{
+            path: './test/fixtures/lib/index/app-one',
+            name: 'app-one'
+          }],
+          pretty: true,
+          webpackOptions: {
+            devtool: 'source-map'
+          }
+        }).
+        then(function (srcArray) {
+          test.ok(_.isArray(srcArray), 'array is returned');
+          test.done();
+        });
+      },
+      'webpackOptions.devtool=source-map creates source map': function (test) {
+        var expectedOne =
+          fs.readFileSync('./test/fixtures/lib/index/app-one.js', {
+          encoding: 'utf8'
+        });
+
+        scout.generate({
+          appModules: [{
+            path: './test/fixtures/lib/index/app-one',
+            name: 'app-one'
+          }],
+          pretty: true,
+          webpackOptions: {
+            devtool: 'source-map'
+          }
+        }).
+        then(function (srcArray) {
+          test.ok(
+            srcArray[0].indexOf(expectedOne) > -1,
+            'scout should include app-one'
+          );
+          test.ok(
+            srcArray[0].indexOf('sourceMappingURL=') > -1,
+            'scout should include sourceMappingURL'
+          );
+          test.ok(
+            JSON.parse(srcArray[1]),
+            'JSON.parse can process the source map contents'
+          );
+
+          test.done();
+        });
       }
     },
     'returns a promise': {

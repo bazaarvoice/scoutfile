@@ -12,7 +12,7 @@ file for a client-side JavaScript application.
 To use this project, it is assumed you already have an environment running
 Node.
 
-## Roadmap & Issues
+## Roadmap and Issues
 
 See the [issues](//github.com/bazaarvoice/scoutfile/issues/) page for details on current development and future
 plans. If there is scout file functionality that your project needs and is not
@@ -328,7 +328,7 @@ to access this data via the `appConfig` module.
 
 To specify one or more "banners" to appear at the top of your file, add a
 banner property to the config you provide to the generator (or the config
-for each grunt task). 
+for each grunt task).
 
 ```
 banner : {
@@ -363,6 +363,76 @@ banner : [
     content : 'Copyright 2015 Bazaarvoice. All rights reserved'.
   }
 ];
+```
+
+#### Advanced Webpack configuration and source maps
+
+By passing in Webpack configuration options to the generator, you can override
+any of the default Webpack configuration that is constructed when generating a
+scout file. Note that this can absolutely break things, for example if you
+provide your own plugins array.
+
+A more common use case is to request a source map to be constructed:
+
+```
+var scout = require('scoutfile');
+scout.generate({
+  appModules: [
+    {
+      name: 'MyApp',
+      path: './app/scripts/scout/main.js'
+    }
+  ],
+
+  // Specify `pretty` to get un-uglified output.
+  pretty: true,
+
+  // Specify overridden Webpack options.
+  webpackOptions: {
+    // Create a source map file main.js.map in addition to the scout file.
+    devtool: 'source-map'
+  }
+}).then(function (sources) {
+  // When requesting a source map file in addition to a scout file, an array
+  // is returned.
+  console.log('Scout: ' + sources[0]);
+  console.log('Source map: ' + sources[1]);
+});
+```
+
+If using the grunt task, a `sourceMapDest` configuration property must be
+provided in addition to `dest` if the source map is generated as a separate
+file:
+
+```
+grunt.initConfig({
+  // ...
+  scoutfile: {
+    server : {
+      src : [
+        {
+          name : 'MyApp',
+          path : './app/scripts/scout/main.js'
+        }
+      ],
+      dest : '.tmp/scripts/scout.js',
+      sourceMapDest : '.tmp/scripts/scout.js.map'
+
+      // Override the default `APP` namespace
+      namespace: 'APPLICATION',
+
+      // Specify `pretty` to get un-uglified code
+      pretty : true,
+
+      // Specify overridden Webpack options.
+      webpackOptions: {
+        // Create a source map file that will be written to sourceMapDest.
+        devtool: 'source-map'
+      }
+    }
+  },
+  // ...
+});
 ```
 
 [npm-url]: https://npmjs.org/package/scoutfile

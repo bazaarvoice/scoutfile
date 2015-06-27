@@ -125,6 +125,33 @@ module.exports = function (grunt) {
             raw: true
           }
         }
+      },
+      sourceMap: {
+        src: [
+          {
+            name: 'app-one',
+            path: './app-one'
+          }
+        ],
+        pretty: true,
+        dest: '../../../test/scratch/sourcemap.js',
+        sourceMapDest: '../../../test/scratch/sourcemap.js.map',
+        webpackOptions: {
+          devtool: 'source-map'
+        }
+      },
+      sourceMapWithoutSourceMapDest: {
+        src: [
+          {
+            name: 'app-one',
+            path: './app-one'
+          }
+        ],
+        pretty: true,
+        dest: '../../../test/scratch/sourcemap.js',
+        webpackOptions: {
+          devtool: 'source-map'
+        }
       }
     }
   });
