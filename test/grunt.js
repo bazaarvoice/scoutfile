@@ -277,6 +277,69 @@ module.exports = {
           });
         }
       }
+    },
+    'source maps with webpackOptions and sourceMapDest': {
+      'source and source map are generated': function (test) {
+        grunt.util.spawn({
+          grunt: true,
+          args: [
+            '--gruntfile=' + TEST_GRUNTFILE,
+            '--no-color',
+            'scoutfile:sourceMap'
+          ]
+        }, function (err) {
+          if (err) {
+            return test.done(err);
+          }
+
+          var expectedSource = fs.readFileSync(
+            './test/fixtures/grunt-task/app-one.js',
+            { encoding: 'utf8' }
+          );
+          var actualSource = fs.readFileSync(
+            './test/scratch/sourcemap.js',
+            { encoding: 'utf8' }
+          );
+          var actualSourceMap = fs.readFileSync(
+            './test/scratch/sourcemap.js.map',
+            { encoding: 'utf8' }
+          );
+
+          test.ok(
+            actualSource.indexOf(expectedSource) >= 0,
+            'should contain app-one.js'
+          );
+          test.ok(
+            JSON.parse(actualSourceMap),
+            'JSON.parse works for the source map contents'
+          );
+          test.done();
+        });
+      },
+      'webpackOptions.devtools requires sourceMapDest': function (test) {
+        grunt.util.spawn({
+          grunt: true,
+          args: [
+            '--gruntfile=' + TEST_GRUNTFILE,
+            '--no-color',
+            'scoutfile:sourceMapWithoutSourceMapDest'
+          ]
+        }, function (err, result) {
+          test.equals(
+            result.code,
+            3,
+            'Should exit with `Task Error` exit code'
+          );
+          test.ok(
+            result.stdout.indexOf(
+              'sourceMapDest is not configured'
+            ) !== -1,
+            'Should complain about missing `sourceMapDest` option'
+          );
+
+          test.done();
+        });
+      }
     }
   }
 };
