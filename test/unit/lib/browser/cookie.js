@@ -35,6 +35,7 @@ module.exports = {
 
       'reads a cookie': function (test) {
         var c = cookie.read('test read');
+
         test.equal(c, 'Hello World');
         test.done();
       }

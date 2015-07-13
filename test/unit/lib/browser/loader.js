@@ -136,10 +136,12 @@ module.exports = {
           global.libLoaderTestCallback = function () {};
           test.done(new Error('script load timed out'));
         }, 1000);
+
       },
 
       'loads the script on a later turn of the event loop': function (test) {
         var later = false;
+
         setTimeout(function () {
           later = true;
         }, 0);
@@ -173,6 +175,7 @@ module.exports = {
         var timeout = setTimeout(function () {
           test.done(new Error('script load timed out'));
         }, 1000);
+
       },
 
       'executes callback after the script': function (test) {
@@ -190,6 +193,7 @@ module.exports = {
         var timeout = setTimeout(function () {
           test.done(new Error('script load timed out'));
         }, 1000);
+
       },
 
       'calls back on failure': function (test) {
@@ -210,6 +214,7 @@ module.exports = {
         var timeout = setTimeout(function () {
           test.done(new Error('script load error timed out'));
         }, 1100);
+
       },
 
       '`document` has correct value in loaded script': function (test) {
@@ -309,6 +314,7 @@ module.exports = {
           'options.injectionNode': {
             'defines injection point for link tag': function (test) {
               var container = doc.createElement('div');
+
               loader.loadStyleSheet('/lib.loader.loadstylesheet.css', {
                 injectionNode: container
               }, function () {
@@ -328,6 +334,7 @@ module.exports = {
             },
             'should throw if appending fails': function (test) {
               var container = doc.createElement('div');
+
               container.appendChild = function () {
                 throw new Error('Intentional sabotage!');
               };
@@ -418,6 +425,7 @@ module.exports = {
         var timeout = setTimeout(function () {
           test.done(new Error('stylesheet load error timed out'));
         }, 1100);
+
       }
     }
   }

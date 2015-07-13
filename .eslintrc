@@ -13,6 +13,7 @@
       "afterColon": true
     }],
     "max-len": [2, 80, 4],
+    "newline-after-var": [2, "always"],
     "no-multiple-empty-lines": 2,
     "no-throw-literal": 2,
     "no-underscore-dangle": 0,

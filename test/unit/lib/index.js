@@ -335,6 +335,7 @@ module.exports = {
           then(function (src) {
             test.doesNotThrow(function () {
                 var consoleError = console.error;
+
                 console.error = function () {};
                 /* eslint-disable no-new-func */
                 (new Function(src))();
