@@ -69,6 +69,7 @@ module.exports = {
 
         'original render method always gets replaced': function(test) {
           var myApp = NS.MyApp;
+
           myApp.originalRender = myApp.render;
 
           var count = 0;
@@ -172,6 +173,7 @@ module.exports = {
 
         'original configure method always gets replaced': function(test) {
           var myApp = NS.MyApp;
+
           myApp.originalConfigure = myApp.configure;
 
           var count = 0;

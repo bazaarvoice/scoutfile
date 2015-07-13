@@ -78,6 +78,7 @@ module.exports = {
             test.equals(result.code, 0, 'Should exit without errors');
 
             var expected = path.dirname(TEST_GRUNTFILE) + '/scout.js';
+
             test.ok(
               fs.existsSync(expected),
               'should output bundle as `' + expected + '`'
@@ -99,6 +100,7 @@ module.exports = {
             test.equals(result.code, 0, 'Should exit without errors');
 
             var expected = './test/scratch/src-entries-built-actual.js';
+
             test.ok(
               fs.existsSync(expected),
               'should output bundle as `' + expected + '`'
