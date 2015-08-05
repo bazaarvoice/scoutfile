@@ -51,13 +51,13 @@ To try an example:
 - Clone this repo:
 
 ```
-git clone git@github.com:bazaarvoice/scoutfile.git
+git clone https://github.com/bazaarvoice/scoutfile.git
 ```
 
 - Copy the files from the example directory of the repo:
 
 ```
-cd scout
+cd scoutfile
 cp -r example ../scout-example
 ```
 
