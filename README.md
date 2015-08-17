@@ -435,6 +435,14 @@ grunt.initConfig({
 });
 ```
 
+## Troubleshooting
+
+### loader timeout
+
+Understanding the loader module is critical to the usage of this repository. The default timeout is sufficient for common usage, but may not be large enough for environments where load times will be much slower than anticipated, such as slow mobile networks, dial-up connection, use of tunneling Selenium test services such as BrowserStack and Sauce Labs, and so forth. Older browsers such as IE8 may obfuscate timeout problems with other errors, making it difficult to debug such issues.
+
+If you experience any issues with application load timeouts, review the documentation on the [timeout option][timeout-option] and experiment with larger timeout values.
+
 [npm-url]: https://npmjs.org/package/scoutfile
 [npm-image]: https://badge.fury.io/js/scoutfile.svg
 [travis-url]: https://travis-ci.org/bazaarvoice/scoutfile
@@ -442,3 +450,4 @@ grunt.initConfig({
 [daviddm-url]: https://david-dm.org/bazaarvoice/scoutfile.svg?theme=shields.io
 [daviddm-image]: https://david-dm.org/bazaarvoice/scoutfile
 [modules]: ./docs/modules.md
+[timeout-option]: ./docs/modules.md#loader-timeout

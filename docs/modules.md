@@ -222,7 +222,7 @@ old IE.
 - **attributes**: an object containing key/value pairs to be used as
 attributes on the created `<script>` element.
 - **timeout**: the time in milliseconds before the loading should be
-considered failed. Defaults to 1000ms.
+considered failed. Defaults to 10000ms.
 
 ### loadStyleSheet options
 
@@ -231,7 +231,25 @@ attributes on the created `<link>` element.
 - **injectionNode**: a DOM node into which the `<link>` element should be
 placed. The default insertion point is after the first `<script>` element on the page.
 - **timeout**: the time in milliseconds before the loading should be
-considered failed. Defaults to 1000ms.
+considered failed. Defaults to 10000ms.
+
+### loader timeout
+
+The loader module provides an extensible timeout that will invoke the provided callback with an error. In certain remote testing environments, the default timeout may not be sufficient for an initial page load. If you experience timeout errors when using the loader module you should experiment with raising this timeout using the provided `option.timeout`.
+
+```js
+var loader = require('scoutfile/lib/browser/loader');
+
+var options =  {
+  timeout : 30000
+}
+
+loader.loadScript('/scripts/main.js', options, function (err, cb) {
+  if (err) {
+    console.log('We may have timed out :(');
+  }
+});
+```
 
 ## namespace
 
