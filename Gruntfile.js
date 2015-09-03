@@ -7,6 +7,9 @@ var WebpackDevServer = require('webpack-dev-server');
 var webpack = require('webpack');
 
 module.exports = function (grunt) {
+  // Always output stack traces.
+  grunt.option('stack', true);
+
   grunt.initConfig({
     eslint: {
       target: [

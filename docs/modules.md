@@ -22,7 +22,9 @@ With the exception of the `namespace` module, only modules that you chose to
 The application module provides a function that creates an application
 instance using a name you provide. An application instance provides methods to
 queue your user's calls until the actual code to support those calls is
-present.
+present. For documentation of the application class, see:
+
+https://github.com/bazaarvoice/bv-ui-core/tree/master/lib/application
 
 For example, your user may expect to be able to ask your application to render
 immediately after your scout file is loaded, even though the code to perform
@@ -31,7 +33,7 @@ the rendering has not yet loaded.
 Once you create an application instance, it is available via its application
 name as a property in the scout file's namespace. (By default, the scout
 file's namespace is `window.APP`, but this can be changed in your build
-configuration.) So, for example, if you create an application with a name of
+configuration). So, for example, if you create an application with a name of
 "Spotlights," then the application instance will be available at
 `window.APP.Spotlights`.
 
@@ -54,30 +56,6 @@ myApp.config = config;
 // the APP.MyApp.onLoad method
 loader.loadScript(config.appJS).then(APP.MyApp.onLoad);
 ```
-
-An application instance provides the following methods:
-
-- `render(config)`: A method intended for your users to call any time after
-  the scout file is loaded, passing in configuration information related to a
-  request to render your application.
-
-```js
-APP.MyApp.render({ productId : 1 });
-```
-
-- `processQueue(fn)`: A method that your core application code can call in
-  order to access calls to `render` that have occurred; the provided function
-  will be used to handle those calls, and will then replace the original
-  definition of the `render` method. Queued items are processed on the next
-  tick.
-- `configure(config)`: A method intended for your users to call any time after
-  the scout file is loaded, passing in general configuration information not
-  necessarily related to rendering.
-- `processConfig(fn)`: A method that your core application code can call in
-  order to access calls to `configure` that have occurred; the provided
-  function will be used to handle those calls, and will then replace the
-  original definition of the `configure` method. Queued items are processed
-  synchronously, as they are not expected to have any DOM implications.
 
 ## appConfig
 
@@ -115,141 +93,35 @@ if (appConfig.reviews) {
 
 ## cookie
 
-The cookie module provides methods for interacting with browser cookies.
+The cookie module provides methods for interacting with browser cookies. See:
 
-```js
-var cookie = require('scoutfile/lib/browser/cookie');
-
-cookie.write('RememberMe', '1', 365);
-console.log(cookie.read('RememberMe')); // '1'
-cookie.remove('RememberMe');
-```
-
-The following methods are provided:
-
-- `read(name)`: Read the cookie with the given name.
-- `create(name, value, [days, domain, secure])`: Write a cookie with the given
-  name and value. Set the expiration in days using the `days` argument; set
-  the domain using the `domain` argument; indicate that the cookie is secure
-  by passing `true` as the `secure` argument. Note that if one optional
-  argument is provided, all previous arguments must be provided as well.
-- `remove(name)`: Delete the cookie with the given name.
+https://github.com/bazaarvoice/bv-ui-core/tree/master/lib/cookie
 
 ## evented
 
-Based on [asEvented](https://github.com/mkuklis/asEvented), the evented module
-provides a function that can be called on a constructor in order to make
-instances act as event emitters.
+The evented module provides a function that can be called on a constructor in
+order to make instances act as event emitters. See:
 
-```js
-var evented = require('scoutfile/lib/browser/evented');
-
-function Model(config) {
-  this.config = config;
-};
-
-evented.call(Model.prototype);
-```
-
-An event emitter provides the following methods:
-
-- `on(event, fn)`
-- `off(event, fn)`
-- `one(event, fn)`
-- `trigger(event, *data)`
+https://github.com/bazaarvoice/bv-ui-core/tree/master/lib/evented
 
 ## global
 
-The global module provides reliable access to the `window` object.
+The global module provides reliable access to the `window` object. See:
 
-```js
-// require modules provided by the scout repo
-var global = require('scoutfile/lib/browser/global');
-var doc = global.document;
-
-// ...
-```
+https://github.com/bazaarvoice/bv-ui-core/tree/master/lib/global
 
 ## ie
 
-The ie module provides the version of IE in which the scout is running, if the
-browser is IE and the version is less than or equal to 9. In other cases, the
-value provided by the module is false.
+The ie module provides the version of IE in which the scout is running. See:
 
-```js
-// require modules provided by the scout repo
-var ie = require('scoutfile/lib/browser/ie');
-
-if (!ie) {
-  // thank goodness
-}
-```
+https://github.com/bazaarvoice/bv-ui-core/tree/master/lib/ie
 
 ## loader
 
-The loader module provides the following methods:
+The loader module provides the following methods to load scripts and
+stylesheets. See:
 
-- `loadScript(url, [options], [callback])`: Loads the script at the provided
-  URL in a non-blocking manner, and executes a Node-style callback (if
-  provided) when the script is loaded or fails to load. Also returns a promise
-  that will be resolved if the script loads, and rejected if it does not. A
-  `timeout` value in milliseconds can be provided via the `options` argument.
-- `loadStyleSheet(url, [options], [callback])`: Loads the CSS at the provided
-  URL in a non-blocking manner, and executes a Node-style callback (if
-  provided) when the CSS is loaded or fails to load. Also returns a promise
-  that will be resolved if the CSS loads, and rejected if it does not. A
-  `timeout` value in milliseconds can be provided via the `options` argument.
-
-```js
-var loader = require('scoutfile/lib/browser/loader');
-
-var promise = loader.loadScript('/scripts/main.js', function (err, cb) {
-  console.log('it worked');
-});
-
-promise.then(function () {
-  console.log('it really worked');
-});
-```
-
-Note: Failure to load is *not* reliably detected in older versions of IE. For
-both `loadScript` and `loadStyleSheet`, the callback will not be executed on
-failure in old IE, and the returned promise will not be rejected on failure in
-old IE.
-
-### loadScript options
-
-- **attributes**: an object containing key/value pairs to be used as
-attributes on the created `<script>` element.
-- **timeout**: the time in milliseconds before the loading should be
-considered failed. Defaults to 10000ms.
-
-### loadStyleSheet options
-
-- **attributes**: an object containing key/value pairs to be used as
-attributes on the created `<link>` element.
-- **injectionNode**: a DOM node into which the `<link>` element should be
-placed. The default insertion point is after the first `<script>` element on the page.
-- **timeout**: the time in milliseconds before the loading should be
-considered failed. Defaults to 10000ms.
-
-### loader timeout
-
-The loader module provides an extensible timeout that will invoke the provided callback with an error. In certain remote testing environments, the default timeout may not be sufficient for an initial page load. If you experience timeout errors when using the loader module you should experiment with raising this timeout using the provided `option.timeout`.
-
-```js
-var loader = require('scoutfile/lib/browser/loader');
-
-var options =  {
-  timeout : 30000
-}
-
-loader.loadScript('/scripts/main.js', options, function (err, cb) {
-  if (err) {
-    console.log('We may have timed out :(');
-  }
-});
-```
+https://github.com/bazaarvoice/bv-ui-core/tree/master/lib/loader
 
 ## namespace
 

@@ -1,12 +1,13 @@
-/* global window: false, global: true */
 'use strict';
 
 var global = require('../../../../lib/browser/global');
+var bvUiCoreGlobal = require('bv-ui-core/lib/global');
 
 module.exports = {
-  'exports window': function (test) {
-    test.strictEqual(
-      global, window, 'lib/global should export window');
-    test.done();
+  'lib/browser/global': {
+    'exports a module': function (test) {
+      test.ok(global === bvUiCoreGlobal);
+      test.done();
+    }
   }
 };
