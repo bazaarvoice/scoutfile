@@ -5,11 +5,7 @@ var path = require('path');
 
 module.exports = {
   entry: {
-    'unit-tests': './test/fixtures/browser/unit-tests.runner.js',
-    'lib.loader.loadscript': './test/fixtures/browser/lib.loader.loadscript.js',
-    'lib.loader.loadstylesheet':
-      'file?name=lib.loader.loadstylesheet.css!' +
-      './test/fixtures/browser/lib.loader.loadstylesheet.css'
+    'unit-tests': './test/fixtures/browser/unit-tests.runner.js'
   },
   output: {
     path: path.resolve(__dirname, '.'),

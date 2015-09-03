@@ -1,11 +1,12 @@
 'use strict';
 
+var ie = require('../../../../lib/browser/ie');
+var bvUiCoreIe = require('bv-ui-core/lib/ie');
+
 module.exports = {
-  'lib/ie': {
-    'does exist': function (test) {
-      test.doesNotThrow(function () {
-        require('../../../../lib/browser/ie');
-      });
+  'lib/browser/ie': {
+    'exports a module': function (test) {
+      test.ok(ie === bvUiCoreIe);
       test.done();
     }
   }
