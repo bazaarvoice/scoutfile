@@ -4,27 +4,27 @@
   "description": "Tools to generate a scout file for a client-side JS application",
   "main": "lib/index.js",
   "dependencies": {
-    "async": "^0.9.0",
-    "bluebird": "^2.9.25",
-    "css-loader": "^0.12.0",
-    "domready": "^0.3.0",
-    "file-loader": "^0.8.1",
-    "handlebars-loader": "^1.0.2",
-    "json-loader": "^0.5.1",
-    "lodash": "^2.4.2",
-    "memory-fs": "^0.2.0",
-    "raw-loader": "^0.5.1",
-    "sass-loader": "^0.4.0",
-    "webpack": "^1.8.11",
-    "yaml-loader": "^0.1.0"
+    "async": "0.9.0",
+    "bluebird": "2.9.25",
+    "css-loader": "0.12.0",
+    "domready": "0.3.0",
+    "file-loader": "0.8.1",
+    "handlebars-loader": "1.0.2",
+    "json-loader": "0.5.1",
+    "lodash": "2.4.2",
+    "memory-fs": "0.2.0",
+    "raw-loader": "0.5.1",
+    "sass-loader": "0.4.0",
+    "webpack": "1.8.11",
+    "yaml-loader": "0.1.0"
   },
   "devDependencies": {
-    "ghooks": "^0.3.2",
-    "grunt": "^0.4.5",
-    "grunt-contrib-nodeunit": "^0.4.1",
+    "ghooks": "0.3.2",
+    "grunt": "0.4.5",
+    "grunt-contrib-nodeunit": "0.4.1",
     "grunt-eslint": "15.0.0",
-    "jsdom": "^3.1.2",
-    "webpack-dev-server": "^1.8.2"
+    "jsdom": "3.1.2",
+    "webpack-dev-server": "1.8.2"
   },
   "scripts": {
     "test": "grunt test"
