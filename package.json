@@ -1,6 +1,6 @@
 {
   "name": "scoutfile",
-  "version": "1.7.0",
+  "version": "2.0.0",
   "description": "Tools to generate a scout file for a client-side JS application",
   "main": "lib/index.js",
   "dependencies": {
@@ -8,7 +8,6 @@
     "bluebird": "2.9.34",
     "bv-ui-core": "0.5.0",
     "css-loader": "0.17.0",
-    "domready": "1.0.8",
     "file-loader": "0.8.4",
     "handlebars-loader": "1.1.1",
     "json-loader": "0.5.2",
