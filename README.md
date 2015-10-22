@@ -89,9 +89,8 @@ npm install --save scoutfile
 
 You can now write your application's portion of the scout file. The example
 below shows an application that includes modules provided by the scout project
-(see [Including common functionality via modules](#including-common-
-functionality-via-modules)), as well as a JSON resource (see [Including non-JS
-resources](#including-non-js-resources)).
+(see [Including common functionality via modules](#including-common-functionality-via-modules)),
+as well as a JSON resource (see [Including non-JS-resources](#including-non-js-resources)).
 
 ```js
 var App = require('scoutfile/lib/browser/application');
