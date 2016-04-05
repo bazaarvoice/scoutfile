@@ -1,0 +1,2 @@
+# Ignore .gitignore so that we don't include it in the npm package.
+.gitignore
