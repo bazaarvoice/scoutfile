@@ -10,7 +10,7 @@ This repository provides a Node module that can be used to generate a "scout"
 file for a client-side JavaScript application.
 
 To use this project, it is assumed you already have an environment running
-Node.
+Node 5.
 
 ## Roadmap and Issues
 
