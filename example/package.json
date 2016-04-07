@@ -12,9 +12,9 @@
     "scoutfile": "git+ssh://git@github.com:bazaarvoice/scoutfile.git#master"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "gulp": "^3.8.11",
-    "vinyl": "^0.4.6",
-    "vinyl-source-stream": "^1.1.0"
+    "grunt": "1.0.1",
+    "gulp": "3.8.11",
+    "vinyl": "1.1.1",
+    "vinyl-source-stream": "1.1.0"
   }
 }
