@@ -1,39 +1,42 @@
 {
   "env": {
-    "node": true
+    "node": true,
+    "es6": true
   },
+  "extends": "eslint:recommended",
   "rules": {
-    "brace-style": [2, "stroustrup", { "allowSingleLine": true }],
-    "consistent-return": 0,
-    "curly": 2,
-    "eqeqeq": 2,
-    "indent": [2, 2, {"indentSwitchCase": true}],
-    "key-spacing": [2, {
+    "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
+    "consistent-return": "off",
+    "curly": "error",
+    "eqeqeq": "error",
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "key-spacing": ["error", {
       "beforeColon": false,
       "afterColon": true
     }],
-    "max-len": [2, 80, 4],
-    "newline-after-var": [2, "always"],
-    "no-multiple-empty-lines": 2,
-    "no-throw-literal": 2,
-    "no-underscore-dangle": 0,
-    "no-unused-vars": [2, {
+    "max-len": ["error", 80, 4],
+    "newline-after-var": ["error", "always"],
+    "no-console": "off",
+    "no-multiple-empty-lines": "error",
+    "no-throw-literal": "error",
+    "no-underscore-dangle": "off",
+    "no-unused-vars": ["error", {
       "vars": "all",
       "args": "none"
     }],
-    "no-use-before-define": [2, "nofunc"],
-    "object-curly-spacing": [2, "always"],
-    "quote-props": [2, "as-needed"],
-    "quotes": [2, "single"],
-    "radix": 2,
-    "space-after-keywords": [2, "always"],
-    "space-before-blocks": [2, "always"],
-    "space-in-parens": [2, "never"],
-    "space-unary-ops": [2, {
+    "no-use-before-define": ["error", "nofunc"],
+    "object-curly-spacing": ["error", "always"],
+    "quote-props": ["error", "as-needed"],
+    "quotes": ["error", "single"],
+    "radix": "error",
+    "keyword-spacing": "error",
+    "space-before-blocks": ["error", "always"],
+    "space-in-parens": ["error", "never"],
+    "space-unary-ops": ["error", {
       "words": true,
       "nonwords": false
     }],
-    "strict": [2, "global"],
-    "wrap-iife": [2, "inside"]
+    "strict": ["error", "global"],
+    "wrap-iife": ["error", "inside"]
   }
 }

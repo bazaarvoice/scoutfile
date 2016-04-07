@@ -18,23 +18,23 @@ module.exports = {
           'source of specified modules is built into scout': function (test) {
             var expectedOne =
               fs.readFileSync('./test/fixtures/lib/index/app-one.js', {
-              encoding: 'utf8'
-            });
+                encoding: 'utf8'
+              });
             var expectedTwo =
               fs.readFileSync('./test/fixtures/lib/index/app-two.js', {
-              encoding: 'utf8'
-            });
+                encoding: 'utf8'
+              });
 
             scout.generate({
-                appModules: [{
-                  path: './test/fixtures/lib/index/app-one',
-                  name: 'app-one'
-                }, {
-                  path: './test/fixtures/lib/index/app-two',
-                  name: 'app-two'
-                }],
-                pretty: true
-              }).
+              appModules: [{
+                path: './test/fixtures/lib/index/app-one',
+                name: 'app-one'
+              }, {
+                path: './test/fixtures/lib/index/app-two',
+                name: 'app-two'
+              }],
+              pretty: true
+            }).
               then(function (src) {
                 test.ok(
                   src.indexOf(expectedOne) > -1,
@@ -192,8 +192,8 @@ module.exports = {
       'webpackOptions.devtool=source-map creates source map': function (test) {
         var expectedOne =
           fs.readFileSync('./test/fixtures/lib/index/app-one.js', {
-          encoding: 'utf8'
-        });
+            encoding: 'utf8'
+          });
 
         scout.generate({
           appModules: [{
@@ -243,12 +243,12 @@ module.exports = {
       },
       'that is rejected with an `Error` on failure': function (test) {
         scout.generate({
-            appModules: [{
-              name: 'fake',
-              path: './no/such/module'
-            }],
-            pretty: true
-          }).
+          appModules: [{
+            name: 'fake',
+            path: './no/such/module'
+          }],
+          pretty: true
+        }).
           then(function () {
             test.ok(false, 'success handler should not be called');
           }).
@@ -264,29 +264,29 @@ module.exports = {
     'accepts a node-style callback': {
       'that is called with the source on success': function (test) {
         scout.generate({}, function (err, src) {
-            test.ok(_.isNull(err), '`err` should be null');
-            test.ok(
-              _.isString(src),
-              'success handler should be called with src'
-            );
-            test.done();
-          });
+          test.ok(_.isNull(err), '`err` should be null');
+          test.ok(
+            _.isString(src),
+            'success handler should be called with src'
+          );
+          test.done();
+        });
       },
       'that is called with an `Error` on failure': function (test) {
         scout.generate({
-            appModules: [{
-              name: 'fake',
-              path: './no/such/module'
-            }],
-            pretty: true
-          }, function (err, src) {
-            test.ok(
-              err instanceof Error,
-              'failure handler should be called with error'
-            );
-            test.ok(_.isUndefined(src), '`src` should be `undefined`');
-            test.done();
-          });
+          appModules: [{
+            name: 'fake',
+            path: './no/such/module'
+          }],
+          pretty: true
+        }, function (err, src) {
+          test.ok(
+            err instanceof Error,
+            'failure handler should be called with error'
+          );
+          test.ok(_.isUndefined(src), '`src` should be `undefined`');
+          test.done();
+        });
       }
     },
     '`lib/browser/kernel`': {
@@ -295,9 +295,9 @@ module.exports = {
         var expectedOne = 'test/fixtures/lib/index/app-one';
 
         scout.generate({
-            appModules: [],
-            pretty: true
-          }).
+          appModules: [],
+          pretty: true
+        }).
           then(function (src) {
             test.ok(
               src.indexOf(expected) > -1,
@@ -305,12 +305,12 @@ module.exports = {
             );
 
             return scout.generate({
-                appModules: [{
-                  path: './test/fixtures/lib/index/app-one',
-                  name: 'app-one'
-                }],
-                pretty: true
-              });
+              appModules: [{
+                path: './test/fixtures/lib/index/app-one',
+                name: 'app-one'
+              }],
+              pretty: true
+            });
           }).
           then(function (src) {
             test.ok(
@@ -326,22 +326,22 @@ module.exports = {
       },
       'catches exceptions thrown by application modules': function (test) {
         scout.generate({
-            appModules: [{
-              path: './test/fixtures/lib/index/app-that-throws',
-              name: 'app-that-throws'
-            }],
-            pretty: true
-          }).
+          appModules: [{
+            path: './test/fixtures/lib/index/app-that-throws',
+            name: 'app-that-throws'
+          }],
+          pretty: true
+        }).
           then(function (src) {
             test.doesNotThrow(function () {
-                var consoleError = console.error;
+              var consoleError = console.error;
 
-                console.error = function () {};
-                /* eslint-disable no-new-func */
-                (new Function(src))();
-                /* eslint-enable no-new-func */
-                console.error = consoleError;
-              }, 'exceptions should not bubble out of the scout');
+              console.error = function () {};
+              /* eslint-disable no-new-func */
+              (new Function(src))();
+              /* eslint-enable no-new-func */
+              console.error = consoleError;
+            }, 'exceptions should not bubble out of the scout');
             test.done();
           });
       }

@@ -30,7 +30,7 @@ module.exports = function (grunt) {
           // If the error is in the webpack compilation then there should be a
           // stats object to investigate. Otherwise this is some other sort of
           // exception.
-          var stats = err && err.webpackStats;
+          var stats = err && err.webpackStats || err;
           var error;
           var sourceMap;
 
