@@ -369,7 +369,7 @@ banner : [
 By passing in Webpack configuration options to the generator, you can override
 any of the default Webpack configuration that is constructed when generating a
 scout file. Note that this can absolutely break things, for example if you
-provide your own plugins array.
+provide your own plugins array that includes plugins used by this library.
 
 A more common use case is to request a source map to be constructed:
 
