@@ -3,6 +3,21 @@
 var _ = require('lodash');
 var fs = require('fs');
 var scout = require('../../../lib/index');
+var webpack = require('webpack');
+
+function FakePlugin () {}
+
+FakePlugin.prototype.apply = function (compiler) {
+  compiler.plugin('emit', function (compilation, callback) {
+    compilation.assets['plugins.js'] = {
+      source: function () {
+        return 'it works'
+      },
+      size: function () {}
+    }
+    callback();
+  })
+}
 
 module.exports = {
   generate: {
@@ -50,6 +65,36 @@ module.exports = {
                 console.log(e);
                 test.done(e);
               });
+          }
+        },
+        'options.webpackOptions': {
+          'allows plugins': function (test) {
+            scout.generate({
+              appModules: [],
+              webpackOptions: {
+                plugins: [ new FakePlugin() ]
+              }
+            }).
+            then(function (src) {
+              test.ok(
+                src.length && src[1] === 'it works',
+                'includes output from FakePlugin');
+              test.done();
+            })
+          },
+          'does not allow plugins used by this library': function (test) {
+            test.throws(function () {
+              scout.generate({
+                appModules: [],
+                webpackOptions: {
+                  plugins: [ new webpack.DefinePlugin({}) ]
+                }
+              }).
+                then(function (src) {
+                  test.ok(false, 'success handler should not be called');
+                })
+            }, 'plugins used by this library are not allowed');
+            test.done();
           }
         },
         'options.flags': {
