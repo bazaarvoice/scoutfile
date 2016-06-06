@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1
+
+* Allow Webpack plugins not used by scoutfile.
+
 ## 3.0.0
 
 * Require Node 5.
