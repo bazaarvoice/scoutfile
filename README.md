@@ -9,8 +9,17 @@
 This repository provides a Node module that can be used to generate a "scout"
 file for a client-side JavaScript application.
 
+## Requirements
+
 To use this project, it is assumed you already have an environment running
 Node 5.
+
+The application module is written using ES6. In order to use the source you may need to
+provide your own transpiler, depending on your supported browsers.
+
+We also take advantage of some built-ins that you may need to polyfill:
+
+- `Promise`: http://caniuse.com/#feat=promises
 
 ## Roadmap and Issues
 
