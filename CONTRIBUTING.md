@@ -1,10 +1,5 @@
 # Contributing
 
-## Maintainers
-
-- @lawnsea
-- @rmurphey
-
 ## Developing
 
 To develop this code, you'll need Node and Grunt. Once you have Node
