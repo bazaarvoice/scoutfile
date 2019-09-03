@@ -1,6 +1,6 @@
 {
   "name": "scoutfile",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Tools to generate a scout file for a client-side JS application",
   "main": "lib/index.js",
   "dependencies": {
