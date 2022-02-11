@@ -1,6 +1,6 @@
 {
   "name": "scoutfile",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Tools to generate a scout file for a client-side JS application",
   "main": "lib/index.js",
   "dependencies": {
@@ -14,7 +14,7 @@
     "json-loader": "0.5.4",
     "lodash": "4.15.0",
     "memory-fs": "0.3.0",
-    "node-sass": "3.9.3",
+    "node-sass": "4.13.1",
     "raw-loader": "0.5.1",
     "sass-loader": "4.0.2",
     "webpack": "1.13.2",
